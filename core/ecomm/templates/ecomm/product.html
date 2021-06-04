@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% block title %} Product Detail {% endblock title %}
+
+{% block head %}
+    <style>
+        /* font-family: 'Cormorant Garamond', serif;
+         font-family: 'Open Sans', sans-serif;
+        font-family: 'Poppins', sans-serif; */
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            font-size: 2rem;
+        }
+
+        @media (max-width: 992px) {
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        h3 {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+    </style>
+{% endblock head %}
+
+{% block content %}
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="auto" fill="currentColor"
+                    class="bi bi-app mb-2" viewBox="0 0 24 24">
+                    <path
+                        d="M21.316,4.055C19.556,3.478,15,1.985,15,2c0,1.657-1.343,3-3,3S9,3.657,9,2c0-0.015-4.556,1.478-6.317,2.055 C2.272,4.19,2,4.571,2,5.003v3.716c0,0.65,0.611,1.128,1.242,0.97L6,9v11v1c0,0.552,0.447,1,1,1h1h8h1c0.553,0,1-0.448,1-1v-3V9 l2.758,0.689C21.389,9.847,22,9.37,22,8.719V5.003C22,4.571,21.728,4.19,21.316,4.055z">
+                    </path>
+                </svg>
+                La Ropa
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> </ul>
+                <span>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item px-3">
+                            <a class="nav-link" href="#">
+                                My Cart
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="auto" fill="currentColor"
+                                    class="bi bi-cart2 ms-2" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link" href="#">
+                                Hello, User
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="auto" fill="currentColor"
+                                    class="bi bi-person-circle ms-2" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path fill-rule="evenodd"
+                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid row mb-5">
+        <div class="container-fluid col-xl-7">
+            <div id="carouselExampleIndicators" class="carousel slide p-md-4" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ prod.img1.url }}"
+                            class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ prod.img2.url }}"
+                            class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ prod.img3.url }}"
+                            class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="container-fluid col-xl-5 p-md-4">
+            <h1 class="display-1">{{ prod.title }}</h1>
+            <h2>{{ prod.desc }}</h2>
+            <br>
+            <h3 class="lead">Price:&nbsp;&nbsp;<strong>${{ prod.price }}</strong></h3>
+            <br>
+            <h3 class="lead">
+                Size:&nbsp;&nbsp;
+                <div class="btn-group" role="group" aria-label="Select your size:">
+                    <input type="radio" class="btn-check" name="btnradio" id="small" value="S" autocomplete="off">
+                    <label class="btn btn-outline-dark" for="small">S</label>
+                  
+                    <input type="radio" class="btn-check" name="btnradio" id="medium" value="M" autocomplete="off" checked>
+                    <label class="btn btn-outline-dark" for="medium">M</label>
+                  
+                    <input type="radio" class="btn-check" name="btnradio" id="large" value="L" autocomplete="off">
+                    <label class="btn btn-outline-dark" for="large">L</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="xtra-large" value="XL" autocomplete="off">
+                    <label class="btn btn-outline-dark" for="xtra-large">XL</label>
+                  </div>
+            </h3>
+            <br>
+            <div class="row">
+                <div class="col-sm-6 p-0 my-2">
+                    <button class="btn btn-dark px-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="auto" fill="currentColor"
+                            class="bi bi-cart2 mb-2 me-2" viewBox="0 0 16 16">
+                            <path
+                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                        </svg>
+                        ADD TO CART
+                    </button>
+                </div>
+                <div class="col-sm-6 p-0 my-2">
+                    <button class="btn btn-outline-dark px-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="auto" fill="currentColor"
+                            class="bi bi-bag mb-1 me-4 ms-2" viewBox="0 0 16 16">
+                            <path
+                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                        </svg>
+                        BUY NOW
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
+
