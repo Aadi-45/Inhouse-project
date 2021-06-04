@@ -50,7 +50,7 @@
 {% block content %}
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{% url 'home' %}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="auto" fill="currentColor"
                     class="bi bi-app mb-2" viewBox="0 0 24 24">
                     <path
@@ -177,6 +177,8 @@
             </div>
         </div>
     </div>
+
     
+
 {% endblock content %}
 
