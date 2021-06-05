@@ -21,8 +21,16 @@ def productView(request, id):
 @login_required 
 def profileView(request):
     
+    if request.method == "POST":
+        form = UserProfileForm(request.POST)
+        if form.is_valid():
+            form.save()
+    
+    else:
+        form = UserProfileForm()
+            
     context = {
-        
+        "form" : form
     }
     return render(request,"ecomm/profile.html",context)
 
