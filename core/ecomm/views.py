@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Product
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from accounts.views import loginView
+from accounts.forms import UserProfileForm, SignUpForm
 
 def homeView(request):
     context = {}
@@ -18,6 +20,9 @@ def productView(request, id):
 
 @login_required 
 def profileView(request):
-    context = {}
+    
+    context = {
+        
+    }
     return render(request,"ecomm/profile.html",context)
 
