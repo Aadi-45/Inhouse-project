@@ -8,16 +8,6 @@
          font-family: 'Open Sans', sans-serif;
         font-family: 'Poppins', sans-serif; */
 
-        .navbar-brand {
-            font-size: 1.8rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-        }
-
-        .nav-item {
-            font-family: 'Poppins', sans-serif;
-        }
-
         h1 {
             font-family: 'Cormorant Garamond', serif;
         }
@@ -44,55 +34,23 @@
             font-family: 'Open Sans', sans-serif;
         }
 
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-family: 'Limelight', cursive;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            font-family: 'Poppins', sans-serif;
+        }
+
     </style>
 {% endblock head %}
 
 {% block content %}
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="auto" fill="currentColor"
-                    class="bi bi-app mb-2" viewBox="0 0 24 24">
-                    <path
-                        d="M21.316,4.055C19.556,3.478,15,1.985,15,2c0,1.657-1.343,3-3,3S9,3.657,9,2c0-0.015-4.556,1.478-6.317,2.055 C2.272,4.19,2,4.571,2,5.003v3.716c0,0.65,0.611,1.128,1.242,0.97L6,9v11v1c0,0.552,0.447,1,1,1h1h8h1c0.553,0,1-0.448,1-1v-3V9 l2.758,0.689C21.389,9.847,22,9.37,22,8.719V5.003C22,4.571,21.728,4.19,21.316,4.055z">
-                    </path>
-                </svg>
-                La Ropa
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> </ul>
-                <span>
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item px-3">
-                            <a class="nav-link" href="#">
-                                My Cart
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="auto" fill="currentColor"
-                                    class="bi bi-cart2 ms-2" viewBox="0 0 16 16">
-                                    <path
-                                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link" href="#">
-                                Hello, User
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="auto" fill="currentColor"
-                                    class="bi bi-person-circle ms-2" viewBox="0 0 16 16">
-                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                    <path fill-rule="evenodd"
-                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
-                </span>
-            </div>
-        </div>
-    </nav>
+    
+    {% include 'nav.html' %}
+
     <div class="container-fluid row mb-5">
         <div class="container-fluid col-xl-7">
             <div id="carouselExampleIndicators" class="carousel slide p-md-4" data-bs-ride="carousel">

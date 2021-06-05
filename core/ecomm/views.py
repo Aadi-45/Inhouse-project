@@ -7,15 +7,17 @@ def homeView(request):
     context = {}
     return render(request, 'ecomm/index.html', context)
 
-def product_view(request, id):
+def productView(request, id):
     prod = Product.objects.get(id = id)
     context = {
         'prod': prod,
     }
 
     return render(request, 'ecomm/product.html', context)
+
+
 @login_required 
-def test_view(request):
+def profileView(request):
     context = {}
-    return render(request,"ecomm/personal.html",context)
+    return render(request,"ecomm/profile.html",context)
 
