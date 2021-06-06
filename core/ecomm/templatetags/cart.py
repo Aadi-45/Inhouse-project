@@ -29,4 +29,14 @@ def total_price(product, cart):
         price = p.price
         qty = cart_count(p, cart)
         sum += multiply(price,qty)
+    return sum
+
+@register.filter(name='total_price_ship')
+def total_price_ship(product, cart):
+    sum=0
+    for p in product:
+        price = p.price
+        qty = cart_count(p, cart)
+        sum += multiply(price,qty)
     return sum + 5.00
+
