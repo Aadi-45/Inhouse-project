@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Product
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from accounts.views import loginView
@@ -20,15 +21,16 @@ def productView(request, id):
 
 @login_required 
 def profileView(request):
-    
     if request.method == "POST":
-        form = UserProfileForm(request.POST)
+        form = UserProfileForm(request.POST, instance=request.user.userprofile)
         if form.is_valid():
             form.save()
+            messages.success(request, f"Your account has been updated!")
+            return redirect("profile")
     
     else:
-        form = UserProfileForm()
-            
+        form = UserProfileForm(instance=request.user.userprofile)
+    
     context = {
         "form" : form
     }

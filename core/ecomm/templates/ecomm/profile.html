@@ -20,47 +20,52 @@
 
     {% include 'nav.html' %}
 
-    <!-- ADD CODE HERE -->
-    <!-- <h1>Hello username</h1> -->
+    {% comment %} <form method="POST">    {% csrf_token %}
+        <label>Name</label>
+        <p>{{request.user.first_name}}</p>
+        <p>{{request.user.last_name}}</p>
+        <p>{{request.user.email}}</p>
+        {{form.as_p}}
+
+        <button type="submit">Reset</button>
+    </form> {% endcomment %}
+
     <div class="container-fluid row form">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <form class="form" method="POST"> {% csrf_token %} 
-                <h1 class="display-6">Personal Information </h1>
+            <form class="form" method="POST"> {% csrf_token %}
+                <h1 class="display-6">Personal Information of {{request.user}} </h1>
                 <hr>
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row mb-4">
                     <div class="col-md-6">
                         <div class="form-outline">
                             <label class="form-label" for="form6Example1">First name</label>
-                            <input type="text" id="form6Example1" class="form-control" value="{{request.user.first_name}}" />
+                            <input type="text" id="form6Example1" class="form-control" value={{request.user.first_name}} />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-outline">
                             <label class="form-label" for="form6Example2">Last name</label>
-                            <input type="text" id="form6Example2" class="form-control" value="{{request.user.last_name}}" />
+                            <input type="text" id="form6Example2" class="form-control" value={{request.user.last_name}} />
                         </div>
                     </div>
                 </div>
                 <!-- Text input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form6Example4">Address</label>
-                    {% comment %} <input type="text" id="form6Example4" class="form-control" value="{{form.user.address}}" /> {% endcomment %}
                     {{form.address}}
                 </div>
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form6Example5">Email</label>
-                    <input type="email" id="form6Example5" class="form-control" value="{{request.user.email}}" />
+                    <input type="email" id="form6Example5" class="form-control" value={{request.user.email}} />
                 </div>
                 <!-- Number input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form6Example6">Phone</label>
-                    {% comment %} <input type="tel" id="form6Example6" class="form-control" value="{{form.user.phone}}" /> {% endcomment %}
                     {{form.phone}}
                 </div>
-                
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-dark btn-block mb-4">Reset</button>
             </form>
@@ -101,14 +106,15 @@
         </div>
         <div class="col-md-2"></div>
     </div>
-    <!-- <div class="container-fluid faq" id="qwe"> -->
 
     <script>
+
         var form_fields = document.getElementsByTagName('input')
-        
+
         for (var field in form_fields){
-            form_fields[field].className += ' form-control'
+            form_fields[field].className += ' form-control' 
         }
+
     </script>
 
 {%endblock content%}
