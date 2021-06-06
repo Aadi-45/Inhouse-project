@@ -50,6 +50,7 @@
 {% block content %}
     
     {% include 'nav.html' %}
+    {% load cart %}
 
     <div class="container-fluid row mb-5">
         <div class="container-fluid col-xl-7">
@@ -100,7 +101,7 @@
                     <input type="radio" class="btn-check" name="btnradio" id="small" value="S" autocomplete="off">
                     <label class="btn btn-outline-dark" for="small">S</label>
                   
-                    <input type="radio" class="btn-check" name="btnradio" id="medium" value="M" autocomplete="off" checked>
+                    <input type="radio" class="btn-check" name="btnradio" id="medium" value="M" autocomplete="off">
                     <label class="btn btn-outline-dark" for="medium">M</label>
                   
                     <input type="radio" class="btn-check" name="btnradio" id="large" value="L" autocomplete="off">
@@ -113,17 +114,25 @@
             <br>
             <div class="row">
                 <div class="col-sm-6 p-0 my-2">
+                    {% if prod|is_in_cart:request.session.cart %}
+                    <div class="row p-0">
+                        <form action="" class="col-2" method="POST">{% csrf_token %}
+                            <input hidden type="text" name="to_cart" value="{{ prod.id }}">
+                            <input hidden type="text" name="rem_cart" value="True">
+                            <input type="submit" value="- " class="col-2 btn btn-dark px-4">
+                        </form>
+                        <div class="text-center col-sm-6">{{prod|cart_count:request.session.cart}} in cart</div>
+                        <form action="" class="col-2" method="POST">{% csrf_token %}
+                            <input hidden type="text" name="to_cart" value="{{ prod.id }}">
+                            <input type="submit" value="+ " class="col-2 btn btn-dark px-4">
+                        </form>    
+                    </div>
+                    {% else %}
                     <form action="" method="POST">{% csrf_token %}
-                        <input type="text" value="{{ prod.id }}">
+                        <input hidden type="text" name="to_cart" value="{{ prod.id }}">
                         <input type="submit"  class="btn btn-dark px-4" value="ADD TO CART">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="auto" fill="currentColor"
-                                class="bi bi-cart2 mb-2 me-2" viewBox="0 0 16 16">
-                                <path
-                                    d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-                            </svg>
-                            <!--ADD TO CART-->
-                        <!--</button>-->
                     </form>
+                    {% endif %}
                 </div>
                 <div class="col-sm-6 p-0 my-2">
                     <button class="btn btn-outline-dark px-4">

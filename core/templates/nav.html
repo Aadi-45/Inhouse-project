@@ -19,8 +19,10 @@
                 <span>
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item px-3">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{% url 'cart' %}">
                                 My Cart
+                                <!--To show no. of items in cart-->
+                                <span class="badge badge-info">{{ request.session.cart.keys|length }}</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="auto" fill="currentColor"
                                     class="bi bi-cart2 ms-2" viewBox="0 0 16 16">
                                     <path

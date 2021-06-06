@@ -20,13 +20,21 @@
 
     {% include 'nav.html' %}
 
-    <!-- ADD CODE HERE -->
-    <!-- <h1>Hello username</h1> -->
+    {% comment %} <form method="POST">    {% csrf_token %}
+        <label>Name</label>
+        <p>{{request.user.first_name}}</p>
+        <p>{{request.user.last_name}}</p>
+        <p>{{request.user.email}}</p>
+        {{form.as_p}}
+
+        <button type="submit">Reset</button>
+    </form> {% endcomment %}
+
     <div class="container-fluid row form">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <form class="form">
-                <h1 class="display-6">Personal Information </h1>
+            <form class="form" method="POST"> {% csrf_token %}
+                <h1 class="display-6">Personal Information of {{request.user}} </h1>
                 <hr>
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row mb-4">
@@ -46,7 +54,7 @@
                 <!-- Text input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form6Example4">Address</label>
-                    <input type="text" id="form6Example4" class="form-control" />
+                    {{form.address}}
                 </div>
                 <!-- Email input -->
                 <div class="form-outline mb-4">
@@ -56,12 +64,7 @@
                 <!-- Number input -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form6Example6">Phone</label>
-                    <input type="tel" id="form6Example6" class="form-control" />
-                </div>
-                <!-- Message input -->
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form6Example7">Additional information</label>
-                    <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+                    {{form.phone}}
                 </div>
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-dark btn-block mb-4">Reset</button>
@@ -103,5 +106,15 @@
         </div>
         <div class="col-md-2"></div>
     </div>
-    <!-- <div class="container-fluid faq" id="qwe"> -->
+
+    <script>
+
+        var form_fields = document.getElementsByTagName('input')
+
+        for (var field in form_fields){
+            form_fields[field].className += ' form-control' 
+        }
+
+    </script>
+
 {%endblock content%}
