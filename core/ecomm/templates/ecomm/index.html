@@ -48,130 +48,39 @@
             <!-- FOR LARGER SCREEN SIZES -->
             <div class="col-lg-2">
                 <div class="btn-group-vertical d-none d-lg-block border-end ms-5 mt-5 px-3 pt-4" role="group">
-                    <button type="button" class="btn btn-outline-dark"> <a href="#">Shirts</a> </button>
-                    <button type="button" class="btn btn-outline-dark"> <a href="#">Tees</button>
-                    <button type="button" class="btn btn-outline-dark"> <a href="#">Pants</a> </button>
+                    <button type="button" class="btn btn-outline-dark"> <a href="/">All</a> </button>
+                    <button type="button" class="btn btn-outline-dark"> <a href="/?category=SH">Shirts</a> </button>
+                    <button type="button" class="btn btn-outline-dark"> <a href="/?category=TS">Tees</a></button>
+                    <button type="button" class="btn btn-outline-dark"> <a href="/?category=TR">Pants</a> </button>
                 </div>
                 <!-- FOR SMALLER SCREEN SIZES -->
                 <div class="btn-group d-block d-lg-none mt-3 px-0 py-4" role="group">
-                    <button type="button" class="btn btn-outline-dark"> <a href="#">Shirts</a> </button>
-                    <button type="button" class="btn btn-outline-dark"> <a href="#">Tees</button>
-                    <button type="button" class="btn btn-outline-dark"> <a href="#"></a> Pants</button>
+                    <button type="button" class="btn btn-outline-dark"> <a href="/">All</a> </button>
+                    <button type="button" class="btn btn-outline-dark"> <a href="/?category=SH">Shirts</a> </button>
+                    <button type="button" class="btn btn-outline-dark"> <a href="/?category=TS">Tees</a></button>
+                    <button type="button" class="btn btn-outline-dark"> <a href="/?category=TR">Pants</a> </button>
                     <hr>
                 </div>
             </div>
             <div class="col-lg-10">
-                <h1 class="display-3">Shirts</h1>
+                <h1 class="display-3">Products</h1>
                 <div class="row my-4 container-fluid">
+                    <!--Iterable part starts-->
+                    {% for product in products %}
                     <div class="col-sm-6 col-md-4 my-2">
-                        <a href="#">
+                        <a href="product/{{ product.id }}">
                             <div class="card" style="width: 90%;">
-                                <img src="https://cdn.shopify.com/s/files/1/0167/4484/products/kyle-charcoal-1_740x918_crop_center.jpg?v=1613681560"
-                                    class="card-img-top" alt="...">
+                                <img src="{{ product.img1.url }}" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h2 class="lead" style="font-weight: bold;">Product Name</h2>
-                                    <p class="card-text">$24.99</p>
+                                    <h2 class="lead" style="font-weight: bold;">{{ product.title }}</h2>
+                                    <p class="card-text">${{ product.price }}</p>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="col-sm-6 col-md-4 my-2">
-                        <a href="#">
-                            <div class="card" style="width: 90%;">
-                                <img src="https://cdn.shopify.com/s/files/1/0167/4484/products/kyle-charcoal-1_740x918_crop_center.jpg?v=1613681560"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h2 class="lead" style="font-weight: bold;">Product Name</h2>
-                                    <p class="card-text">$24.99</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-md-4 my-2">
-                        <a href="#">
-                            <div class="card" style="width: 90%;">
-                                <img src="https://cdn.shopify.com/s/files/1/0167/4484/products/kyle-charcoal-1_740x918_crop_center.jpg?v=1613681560"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h2 class="lead" style="font-weight: bold;">Product Name</h2>
-                                    <p class="card-text">$24.99</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-md-4 my-2">
-                        <a href="#">
-                            <div class="card" style="width: 90%;">
-                                <img src="https://cdn.shopify.com/s/files/1/0167/4484/products/kyle-charcoal-1_740x918_crop_center.jpg?v=1613681560"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h2 class="lead" style="font-weight: bold;">Product Name</h2>
-                                    <p class="card-text">$24.99</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-md-4 my-2">
-                        <a href="#">
-                            <div class="card" style="width: 90%;">
-                                <img src="https://cdn.shopify.com/s/files/1/0167/4484/products/kyle-charcoal-1_740x918_crop_center.jpg?v=1613681560"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h2 class="lead" style="font-weight: bold;">Product Name</h2>
-                                    <p class="card-text">$24.99</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-md-4 my-2">
-                        <a href="#">
-                            <div class="card" style="width: 90%;">
-                                <img src="https://cdn.shopify.com/s/files/1/0167/4484/products/kyle-charcoal-1_740x918_crop_center.jpg?v=1613681560"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h2 class="lead" style="font-weight: bold;">Product Name</h2>
-                                    <p class="card-text">$24.99</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-md-4 my-2">
-                        <a href="#">
-                            <div class="card" style="width: 90%;">
-                                <img src="https://cdn.shopify.com/s/files/1/0167/4484/products/kyle-charcoal-1_740x918_crop_center.jpg?v=1613681560"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h2 class="lead" style="font-weight: bold;">Product Name</h2>
-                                    <p class="card-text">$24.99</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-md-4 my-2">
-                        <a href="#">
-                            <div class="card" style="width: 90%;">
-                                <img src="https://cdn.shopify.com/s/files/1/0167/4484/products/kyle-charcoal-1_740x918_crop_center.jpg?v=1613681560"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h2 class="lead" style="font-weight: bold;">Product Name</h2>
-                                    <p class="card-text">$24.99</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-md-4 my-2">
-                        <a href="#">
-                            <div class="card" style="width: 90%;">
-                                <img src="https://cdn.shopify.com/s/files/1/0167/4484/products/kyle-charcoal-1_740x918_crop_center.jpg?v=1613681560"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h2 class="lead" style="font-weight: bold;">Product Name</h2>
-                                    <p class="card-text">$24.99</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
+                    {% endfor %}
+                    <!--Iterable part ends-->
+                   
                 </div>
             </div>
         </div>

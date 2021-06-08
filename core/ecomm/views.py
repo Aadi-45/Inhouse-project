@@ -7,7 +7,15 @@ from accounts.views import loginView
 from accounts.forms import UserProfileForm, SignUpForm
 
 def homeView(request):
-    context = {}
+    products = None
+    categoryID = request.GET.get('category')
+    if categoryID:
+        products = Product.get_by_category(categoryID)
+    else:
+        products = Product.get_all_products()
+    context = {
+        'products':products
+    }
     return render(request, 'ecomm/index.html', context)
 
 def productView(request, id):
