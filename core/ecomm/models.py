@@ -32,4 +32,14 @@ class Product(models.Model):
     def get_product_by_id(ids):
         return Product.objects.filter(id__in=ids)
     
+    @staticmethod
+    def get_all_products():
+        return Product.objects.all()
+
+    @staticmethod
+    def get_by_category(category_id):
+        if category_id:
+            return Product.objects.filter(category = category_id)
+        else:
+            return Product.get_all_products()
 
