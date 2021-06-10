@@ -121,7 +121,11 @@
                 {% endif %}
               </li>
             </ul>
-            <button type="button" class="btn btn-dark btn-block">Go to checkout</button>
+            <form method="POST"> {% csrf_token %}
+
+              <button type="submit" name="checkout_but" class="btn btn-dark btn-block" value=True>Go to checkout</button>
+
+            </form>
           </div>
         </div>
       </div>

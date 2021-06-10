@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
-from .models import Product
+from .models import Product, Order
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from accounts.views import loginView
 from accounts.forms import UserProfileForm, SignUpForm
+
+items = None
+cart = {}
 
 def homeView(request):
     products = None
@@ -50,11 +53,20 @@ def productView(request, id):
 
 @login_required
 def cartView(request):
+    global items, cart
     if request.method == 'POST':
         to_cart = request.POST.get('to_cart')
+        rem_cart = request.POST.get('rem_cart')
         cart = request.session.get('cart')
-        cart.pop(str(to_cart))
-        request.session['cart']=cart
+        checkout_but = request.POST.get('checkout_but')
+        if rem_cart:
+            cart.pop(str(to_cart))
+            request.session['cart']=cart
+        elif checkout_but:
+            products = Product.get_product_by_id(list(cart.keys()))
+            # print(products)
+            items = products
+            return redirect('checkout')
     ids = list(request.session.get('cart').keys())
     products = Product.get_product_by_id(ids)
     context={
@@ -79,3 +91,50 @@ def profileView(request):
     }
     return render(request,"ecomm/profile.html",context)
 
+@login_required
+def checkoutView(request):
+    global items, cart
+    if request.method == "POST":
+        user = request.user
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
+        card_name = request.POST.get('card_name')
+        card_number = request.POST.get('card_number')
+        card_cvv = request.POST.get('card_cvv')
+        # print(items)
+        print(cart)
+        for product in items:
+            order = Order(
+                product = product,
+                user = user,
+                price = product.price,
+                address = address,
+                phone = phone,
+                quantity = cart.get(str(product.id)),
+                card_name = card_name,
+                card_number = card_number,
+                card_cvv = card_cvv
+
+            )
+            request.session['cart'] = {}
+            order.placeOrder()
+            return redirect('thankyou')
+
+    context = {}
+
+    return render(request, 'ecomm/checkout.html', context)
+
+@login_required
+def thankyouView(request):
+    context={}
+    return render(request, 'ecomm/thankyou.html', context)
+
+
+@login_required
+def orderView(request):
+    user = request.user
+    order = Order.objects.filter(user=user)
+    context={
+        'order' : order
+    }
+    return render(request, 'ecomm/orders.html', context)

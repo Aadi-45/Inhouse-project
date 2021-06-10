@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+import datetime
 # Create your models here.
 
 SIZE = (
@@ -43,3 +44,17 @@ class Product(models.Model):
         else:
             return Product.get_all_products()
 
+class Order(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    price = models.IntegerField()
+    address = models.CharField(max_length=200, blank=True)
+    phone = models.CharField(max_length=20, blank=True)
+    date = models.DateField(default=datetime.datetime.today)
+    card_name = models.CharField(max_length=200, blank=True)
+    card_number = models.CharField(max_length=20, blank=True)
+    card_cvv = models.IntegerField(default=0)
+
+    def placeOrder(self):
+        self.save()
