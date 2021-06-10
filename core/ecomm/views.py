@@ -9,6 +9,7 @@ from accounts.forms import UserProfileForm, SignUpForm
 items = None
 cart = {}
 
+# Home Page
 def homeView(request):
     products = None
     categoryID = request.GET.get('category')
@@ -21,6 +22,7 @@ def homeView(request):
     }
     return render(request, 'ecomm/index.html', context)
 
+# Product Page
 def productView(request, id):
     if request.method == 'POST':
         to_cart = request.POST.get('to_cart')
@@ -51,6 +53,7 @@ def productView(request, id):
 
     return render(request, 'ecomm/product.html', context)
 
+# Cart Page
 @login_required
 def cartView(request):
     global items, cart
@@ -74,6 +77,7 @@ def cartView(request):
     }
     return render(request, "ecomm/cart.html", context)
 
+# Profile Page
 @login_required 
 def profileView(request):
     if request.method == "POST":
@@ -91,6 +95,7 @@ def profileView(request):
     }
     return render(request,"ecomm/profile.html",context)
 
+# Checkout page
 @login_required
 def checkoutView(request):
     global items, cart
@@ -124,12 +129,14 @@ def checkoutView(request):
 
     return render(request, 'ecomm/checkout.html', context)
 
+# Thank you page
 @login_required
 def thankyouView(request):
     context={}
     return render(request, 'ecomm/thankyou.html', context)
 
 
+# Orders Page
 @login_required
 def orderView(request):
     user = request.user
