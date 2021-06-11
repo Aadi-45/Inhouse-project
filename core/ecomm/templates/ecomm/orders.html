@@ -47,10 +47,10 @@
 
     <div class="container-fluid row p-3 px-5">
         <h1>My Orders</h1>
-        {% for items in order %}
         <div class="col-lg-10">
             <hr>
             <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for items in order %}
                 <div class="col">
                     <a href="/product/{{items.product.id}}/">
                         <div class="card h-100">
@@ -66,11 +66,10 @@
                         </div>
                     </a>
                 </div>
-                
+            {% endfor %}
             </div>
             <div class="col-lg-2"></div>
         </div>
-        {% endfor %}
         
     </div>
     <br><br><br>
