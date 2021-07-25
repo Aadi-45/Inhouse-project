@@ -64,3 +64,7 @@ cd venv/Scripts
 deactivate.bat
 ```
 
+## Features
+
+- Responsive design
+- User Accounts with password authentication
