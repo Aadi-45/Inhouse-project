@@ -40,7 +40,7 @@ virtual env
 From the project's root directory:
 ```sh
 cd venv/Scripts
-activate
+activate.bat
 ```
 
 ### Install dependencies from `requirements.txt`
@@ -61,6 +61,6 @@ To stop the server press `Ctrl + C`
 After stopping the server, 
 ```sh
 cd venv/Scripts
-deactivate
+deactivate.bat
 ```
 
