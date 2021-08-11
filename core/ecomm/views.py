@@ -57,6 +57,9 @@ def productView(request, id):
 @login_required
 def cartView(request):
     global items, cart
+    if type(request.session.get('cart')) == type(None):
+        request.session['cart'] = {}
+        
     if request.method == 'POST':
         to_cart = request.POST.get('to_cart')
         rem_cart = request.POST.get('rem_cart')
