@@ -109,8 +109,6 @@ def checkoutView(request):
         card_name = request.POST.get('card_name')
         card_number = request.POST.get('card_number')
         card_cvv = request.POST.get('card_cvv')
-        # print(items)
-        print(cart)
         for product in items:
             order = Order(
                 product = product,
@@ -126,7 +124,7 @@ def checkoutView(request):
             )
             request.session['cart'] = {}
             order.placeOrder()
-            return redirect('thankyou')
+        return redirect('thankyou')
 
     context = {}
 
@@ -147,4 +145,5 @@ def orderView(request):
     context={
         'order' : order
     }
+    print(order)
     return render(request, 'ecomm/orders.html', context)
