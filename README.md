@@ -58,7 +58,7 @@ python manage.py runserver
 To stop the server press `Ctrl + C`
 
 ### Deactivate the virtual environment
-After stopping the server, 
+To stop the server 
 ```sh
 cd venv/Scripts
 deactivate
