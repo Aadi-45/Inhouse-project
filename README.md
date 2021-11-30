@@ -1,4 +1,4 @@
-# Inhouse Project
+# Inhouse Project.
 
 ## _La Ropa_ - an E-commerce Website
 
