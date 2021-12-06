@@ -123,7 +123,20 @@
             </ul>
             <form method="POST"> {% csrf_token %}
 
-              <button type="submit" name="checkout_but" class="btn btn-dark btn-block" value=True>Go to checkout</button>
+            {% if request.session.cart.keys|length == 0  %}
+              <button type="submit" name="checkout_but" class="btn btn-dark btn-block" disabled = "disabled" value=True>
+              
+              Go to checkout
+              
+              </button>
+
+            {% else %}
+              <button type="submit" name="checkout_but" class="btn btn-dark btn-block" value=True>
+              
+              Go to checkout
+              
+              </button>
+            {% endif %}
 
             </form>
           </div>
