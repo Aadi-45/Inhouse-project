@@ -5,7 +5,7 @@
 [<img src="https://static.djangoproject.com/img/logos/django-logo-negative.png" height="75" alt="Django">](https://www.djangoproject.com)
 [<img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="75" alt="Bootstrap">](https://getbootstrap.com)
 
-A dynamic e-commerce website designed while keeping the mobile first design approach as the primary focus. A responsive website made using [Django](https://djangoproject.com), as the templating engine and back-end, and [Bootstrap 5.0](https://getbootstrap.com/), for front-end, along with HTML, CSS and JavaScript.
+A dynamic e-commerce website designed while keeping the mobile first design approach as the primary focus. A responsive website made using [Django](https://djangoproject.com), as the templating engine ([Jinja2](https://jinja2docs.readthedocs.io/en/stable/)) and back-end, and [Bootstrap 5.0](https://getbootstrap.com/), for front-end, along with HTML, CSS and JavaScript.
 
 ## Installation
 
@@ -33,7 +33,7 @@ pip install virtualenv
 
 #### Create a virtual environment
 ```sh
-virtual env
+virtualenv venv
 ```
 
 #### Activate the virtual environment
@@ -44,6 +44,7 @@ activate
 ```
 
 ### Install dependencies from `requirements.txt`
+From the project's root directory
 ```sh
 pip install -r requirements.txt
 ```
