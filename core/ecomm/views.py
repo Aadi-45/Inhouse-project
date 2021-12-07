@@ -44,7 +44,7 @@ def productView(request, id):
             cart = {}
             cart[to_cart] = 1
         request.session['cart'] = cart
-        print(request.session['cart'])
+        # print(request.session['cart'])
 
     prod = Product.objects.get(id = id)
     context = {

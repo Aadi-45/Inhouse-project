@@ -38,5 +38,5 @@ def total_price_ship(product, cart):
         price = p.price
         qty = cart_count(p, cart)
         sum += multiply(price,qty)
-    return sum + 5.00
+    return round(sum + 5.00, 2)
 
